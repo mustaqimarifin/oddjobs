@@ -1,0 +1,12 @@
+data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZgAAAOptZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAEOAAEAAAAAAAAAGgAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAamlwcnAAAABLaXBjbwAAABNjb2xybmNseAABAA0ABoAAAAAMYXYxQ4EgAgAAAAAUaXNwZQAAAAAAAAALAAAADAAAABBwaXhpAAAAAAMICAgAAAAXaXBtYQAAAAAAAAABAAEEAYIDBAAAACJtZGF0EgAKCDgM6thAQ0GkMgwegAAAQKP5jku+LOQ=
+
+
+
+
+
+sqip -p potrace -p svgo -p data-uri -n 4 -m 8 --parseable-output \
+-i "/Users/oddjobs/Pictures/Process" \
+-o "/Users/oddjobs/Pictures/Sex"
+
+
+pnpm dlx avif --input="/Users/oddjobs/Sex/**/*.svg" --output="/Users/oddjobs/Pictures/Sex/Avif" --overwrite

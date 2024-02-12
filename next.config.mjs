@@ -17,7 +17,6 @@ const nextConfig = {
       { protocol: 'https', hostname: '*.twimg.com', pathname: '/**' },
       { protocol: 'https', hostname: 'i.postimg.cc', pathname: '/**' },
       { protocol: 'https', hostname: 'cdn.sanity.io', pathname: '/**' },
-      { protocol: 'https', hostname: 'cdni.pornpics.com', pathname: '/**' },
       {
         protocol: 'https',
         hostname: 'ik.imagekit.io',

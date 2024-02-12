@@ -1,4 +1,3 @@
-import { time, timeEnd } from 'console'
 import fs from 'fs'
 import path from 'path'
 

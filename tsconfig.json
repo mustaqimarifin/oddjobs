@@ -23,6 +23,14 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "public/images/glob.mjs", "tools/build.mjs"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "public/images/glob.mjs",
+    "tools/build.mjs",
+    "app/api/incr.route"
+  ],
   "exclude": ["node_modules"]
 }

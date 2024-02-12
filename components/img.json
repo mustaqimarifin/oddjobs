@@ -1,42 +1,41 @@
 [
   {
-     "id": 1,
-    "src":"/trace/Art-17.jpg",
+    "id": 1,
+    "src": "/trace/Art-17.jpg",
     "ow": 500,
-    "oh":701,
+    "oh": 701,
     "pre": "/trace/Art-17.svg",
-    "w":300, 
-    "h":421
-    },
-  
-    {
+    "w": 300,
+    "h": 421
+  },
+
+  {
     "id": 2,
-    "src":"/trace/Art-12.jpg",
+    "src": "/trace/Art-12.jpg",
     "ow": 640,
-    "oh":1037,
+    "oh": 1037,
     "pre": "/trace/Art-12.svg",
-    "w":300, 
-    "h":486
+    "w": 300,
+    "h": 486
   },
-    {
-      "id": 3,
+  {
+    "id": 3,
 
-    "src":"/trace/Art-5.jpg",
+    "src": "/trace/Art-5.jpg",
     "ow": 640,
-    "oh":1049,
+    "oh": 1049,
     "pre": "/trace/Art-5.svg",
-    "w":300, 
-    "h":492
+    "w": 300,
+    "h": 492
   },
-      {
-        "id": 4,
+  {
+    "id": 4,
 
-    "src":"/trace/Art-8.jpg",
+    "src": "/trace/Art-8.jpg",
     "ow": 490,
-    "oh":1494,
+    "oh": 1494,
     "pre": "/trace/Art-8.svg",
-    "w":300, 
-    "h":915
+    "w": 300,
+    "h": 915
   }
 ]
-    

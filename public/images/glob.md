@@ -1,8 +1,8 @@
-/* eslint-disable no-var */
+/_ eslint-disable no-var _/
 import fg from 'fast-glob'
 
-const x = //fg.sync('*.+(jpg|gif|png|jpeg)', { extglob: true })
-fg.sync('*', { onlyFiles: true }); 
+const x = //fg.sync('_.+(jpg|gif|png|jpeg)', { extglob: true })
+fg.sync('_', { onlyFiles: true });
 console.log(x)
 
 backend
@@ -109,7 +109,7 @@ style-guides-component-libraries-design-systems/storybook-docs.png
 style-guides-component-libraries-design-systems/storybook-flow.png
 style-guides-component-libraries-design-systems/style-guide.png
 style-guides-component-libraries-design-systems/website.png
-tailwind 
+tailwind
 tailwind/analytics.jpg
 technical-recruiting-is-broken
 technical-recruiting-is-broken/alexa.jpg
@@ -155,4 +155,4 @@ video/studio.png
 /images/real-time-post-views/db-usage.png
 /images/real-time-post-views/testing-database.png
 
-[text](real-time-post-views) [text](real-time-post-views/firebase) 
+[text](real-time-post-views) [text](real-time-post-views/firebase)

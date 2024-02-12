@@ -16,19 +16,20 @@ This post will show how to display real-time view counts for a given blog post u
 We can host and deploy this entire solution **for free** using Firebase's [free tier](https://firebase.google.com/pricing/) and [Vercel](https://vercel.com).
 
 ## Setting Up Firebase
+
 1.  If you do not have a Firebase account, create one first.
 2.  Create a new project.
 3.  Navigate to "Database" and click "Create Database".
-  ![text](/images/real-time-post-views/firebase/step1.png)
+    ![text](/images/real-time-post-views/firebase/step1.png)
 4.  Start in test mode and click next.
- ![text](/images/real-time-post-views/firebase/step2.png) 
+    ![text](/images/real-time-post-views/firebase/step2.png)
 5.  Choose your database location and click done.
- ![text](/images/real-time-post-views/firebase/step3.png)
+    ![text](/images/real-time-post-views/firebase/step3.png)
 6.  In the top left, click on "Project Settings".
- ![text](/images/real-time-post-views/firebase/step4.png)
+    ![text](/images/real-time-post-views/firebase/step4.png)
 7.  Navigate to "Service Accounts" tab and click "Generate new private key". Save the `.json` file. You will need this later.
-![text](/images/real-time-post-views/firebase/step5.png)  
-We're finished! 🎉 You have successfully set up a realtime database, as well as generated credentials to connect to the database.
+    ![text](/images/real-time-post-views/firebase/step5.png)  
+    We're finished! 🎉 You have successfully set up a realtime database, as well as generated credentials to connect to the database.
 
 ## Connecting To Firebase
 
@@ -109,8 +110,7 @@ For an API route to work, you need to export a default function (i.e., **request
 Using your favorite REST client or your browser, you can now hit `http://localhost:3000/api/views/my-blog` to log a view.
 We can confirm it was logged correctly by checking Firebase.
 
- ![text](/images/real-time-post-views/testing-database.png) 
-
+![text](/images/real-time-post-views/testing-database.png)
 
 ## Fetching Data from Firebase
 

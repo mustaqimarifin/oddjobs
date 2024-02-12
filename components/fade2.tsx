@@ -35,6 +35,7 @@ export default function AnimationOnScroll({
   }, [children])
   return (
     <div
+      suppressHydrationWarning
       ref={ref}
       className={`transition-all duration-500 ${
         visible ? 'fade-in blur-0 opacity-100  ' : 'fade-out blur-md  opacity-0'

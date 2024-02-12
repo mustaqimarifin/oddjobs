@@ -11,9 +11,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-gta)'],
-        serif: ['var(--font-news)'],
-        itl: ['var(--font-news-itl)'],
+        sans: ['var(--rflex)'],
+        serif: ['var(--newsreader)'],
+        itl: ['var(--newsreader)'],
+        mono: ['var(--mono)'],
       },
       colors: {
         cream: '#F2F1EC ',

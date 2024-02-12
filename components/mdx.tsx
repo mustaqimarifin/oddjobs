@@ -1,10 +1,9 @@
 import NextImage from 'next/legacy/image'
 import Link from 'next/link'
-import React, { Suspense } from 'react'
+import { createElement } from 'react'
 import { highlight } from 'sugar-high'
 
-import { Lazy } from './timg'
-//import CoverImage from './coverimage'
+import { GhostImage } from './lazyboy'
 import { TweetComponent } from './tweet'
 
 function Table({ data }) {
@@ -47,18 +46,14 @@ function CustomLink(props) {
   return <a target="_blank" rel="noopener noreferrer" {...props} />
 }
 
+function BlockQuote({ children }) {
+  return <blockquote className="font-itl">{children}</blockquote>
+}
+
 function RoundedImage(props) {
   return <NextImage alt={props.alt} className="rounded-lg" {...props} />
 }
 
-/* function CImage(props) {
-  return (
-    <Suspense>
-      <CoverImage alt={props.alt} className="rounded-lg" {...props} />
-    </Suspense>
-  )
-}
- */
 function Callout(props) {
   return (
     <div className="px-4 py-3 border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded p-1 text-sm flex items-center text-neutral-900 dark:text-neutral-100 mb-8">
@@ -122,7 +117,13 @@ function ConsCard({ title, cons }) {
 
 function Code({ children, ...props }) {
   let codeHTML = highlight(children)
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
+  return (
+    <code
+      className="font-mono"
+      dangerouslySetInnerHTML={{ __html: codeHTML }}
+      {...props}
+    />
+  )
 }
 
 function slugify(str) {
@@ -139,11 +140,11 @@ function slugify(str) {
 function createHeading(level) {
   return ({ children }) => {
     let slug = slugify(children)
-    return React.createElement(
+    return createElement(
       `h${level}`,
       { id: slug },
       [
-        React.createElement('a', {
+        createElement('a', {
           href: `#${slug}`,
           key: `link-${slug}`,
           className: 'anchor',
@@ -153,11 +154,7 @@ function createHeading(level) {
     )
   }
 }
-
-function Image(props) {
-  return <NextImage {...props} />
-}
-
+;<>{createHeading(1)}</>
 export const components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -165,8 +162,9 @@ export const components = {
   h4: createHeading(4),
   h5: createHeading(5),
   h6: createHeading(6),
+  blockquote: BlockQuote,
   RoundedImage,
-  img: Lazy,
+  img: GhostImage,
   a: CustomLink,
   Callout,
   ProsCard,

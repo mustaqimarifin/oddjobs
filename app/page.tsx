@@ -1,10 +1,6 @@
-import AnimationOnScroll from 'components/animationOnScroll'
 import CoverImage from 'components/coverimage'
+import { Fade } from 'components/fade'
 import imgs from 'components/img.json'
-import LazyBoy from 'components/lazyboy'
-import LazyImage from 'components/timg'
-import TraceImage from 'components/trace'
-import Image from 'next/image'
 import Link from 'next/link'
 export default async function Home() {
   return (
@@ -26,9 +22,9 @@ export default async function Home() {
             Heard your mom's a big fan of open source?
           </div>
           {imgs.map((img) => (
-            <AnimationOnScroll key={img.src}>
+            <Fade key={img.src}>
               <CoverImage src={img.src} />
-            </AnimationOnScroll>
+            </Fade>
           ))}
         </div>
 

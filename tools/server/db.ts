@@ -1,8 +1,6 @@
-import Keyv from '@keyvhq/core'
-import KeyvRedis from '@keyvhq/redis'
-import { rdyBitch, redisNamespace, redisURL } from 'tools/siteConfig'
-
-let db: Keyv
+//import Keyv from '@keyvhq/core'
+//import KeyvRedis from '@keyvhq/redis'
+/* let db: Keyv
 if (rdyBitch) {
   const keyvRedis = new KeyvRedis(redisURL)
   db = new Keyv({ store: keyvRedis, namespace: redisNamespace || undefined })
@@ -10,4 +8,6 @@ if (rdyBitch) {
   db = new Keyv()
 }
 
-export { db }
+export { db } */
+
+export {}

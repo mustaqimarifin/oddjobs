@@ -1,4 +1,5 @@
 import pMap from 'p-map'
+import pMemoize from 'p-memoize'
 import path from 'path'
 import sharp from 'sharp'
 import { visit } from 'unist-util-visit'
@@ -6,7 +7,7 @@ import { visit } from 'unist-util-visit'
 export type PreviewImage = {
   width: number
   height: number
-  base64: string
+  base64?: string
 }
 
 type ImageNode = {
@@ -22,8 +23,8 @@ type ImageNode = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const Potrace = require('oslllo-potrace')
-export async function lqip(
+//const Potrace = require('oslllo-potrace')
+async function size(
   input: AsyncIterable<any> | Iterable<any>,
   opts: {
     concurrency?: number
@@ -57,6 +58,7 @@ async function compute(
   //console.log(traced)
   const image = sharp(input).rotate()
   const metadata = await image.metadata()
+  let output
 
   const resized = image.resize(
     ...(Array.isArray(resize)
@@ -68,14 +70,7 @@ async function compute(
         ])
   )
 
-  let output
-
-  if (outputFormat === 'svg') {
-    output = resized.avif({
-      quality: 8,
-      ...outputOptions,
-    })
-  } else if (outputFormat === 'avif') {
+  if (outputFormat === 'avif') {
     output = resized.avif({
       quality: 8,
       ...outputOptions,
@@ -103,10 +98,10 @@ async function compute(
     metadata: {
       originalWidth: metadata.width,
       originalHeight: metadata.height,
-      width: info.width,
-      height: info.height,
+      //width: info.width,
+      //height: info.height,
       type: outputFormat,
-      dataURIBase64: `data:image/${outputFormat};base64,${data.toString('base64')}`,
+      //dataURIBase64: `data:image/${outputFormat};base64,${data.toString('base64')}`,
     },
   }
 }
@@ -120,33 +115,34 @@ function isImageNode(node: ImageNode) {
   )
 }
 
+const resize = pMemoize(size)
 async function createPreviewImage(node: ImageNode) {
   let result
   const url = node.properties.src
   const ext_img = url.startsWith('http')
   const local_img = path.join(`./public`, url)
-  console.log(url)
+  //console.log(url)
 
   try {
     if (!ext_img) {
-      result = await lqip(local_img)
+      result = await resize(local_img)
     } else {
       const body = await fetch(url).then(async (res) =>
         Buffer.from(await res.arrayBuffer())
       )
-      result = await lqip(body)
+      result = await resize(body)
     }
     const previewImage: PreviewImage = {
       width: result.metadata.originalWidth,
       height: result.metadata.originalHeight,
-      base64: result.metadata.dataURIBase64,
+      //base64: result.metadata.dataURIBase64,
     }
 
     if (!result) throw Error(`Invalid image with src "${url}"`)
     ;(node.properties.width = previewImage.width ?? 768),
-      (node.properties.height = previewImage.height ?? 432),
-      (node.properties.blurDataURL = previewImage.base64),
-      (node.properties.placeholder = 'blur')
+      (node.properties.height = previewImage.height ?? 432)
+    //(node.properties.blurDataURL = previewImage.base64),
+    //(node.properties.placeholder = 'blur')
   } catch (err) {
     // ignore redis errors
     console.warn(`redis error set "${url}"`, err)
@@ -156,7 +152,7 @@ async function createPreviewImage(node: ImageNode) {
   return null
 }
 
-const smol = () => {
+const lqip = () => {
   return async function transformer(tree: any) {
     const images: ImageNode[] = []
 
@@ -174,4 +170,4 @@ const smol = () => {
   }
 }
 
-export default smol
+export default lqip
